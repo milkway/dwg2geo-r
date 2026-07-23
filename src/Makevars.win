@@ -6,7 +6,7 @@ LIBDIR = rust/target/$(TARGET)/release
 STATLIB = $(LIBDIR)/libdwg2geo_r.a
 PKG_LIBS = -L$(LIBDIR) -ldwg2geo_r -lws2_32 -ladvapi32 -luserenv -lbcrypt -lntdll
 
-all: C_clean
+all: C_clean rust_clean
 
 # cargo owns incremental rebuilds; make must always invoke it.
 .PHONY: $(STATLIB)
@@ -31,6 +31,13 @@ $(STATLIB):
 
 C_clean:
 	rm -rf $(SHLIB) $(OBJECTS)
+
+# R (>= 4.5) scans every object file left under src/ for entry points such as
+# abort(); the Rust standard library's panic runtime always references abort,
+# so the static library and vendored sources must be gone once $(SHLIB) is
+# linked, or the check attributes them to the package.
+rust_clean: $(SHLIB)
+	rm -rf rust/target rust/vendor
 
 clean:
 	rm -rf $(SHLIB) $(OBJECTS) rust/target rust/vendor rust/.cargo $(CARGOTMP)

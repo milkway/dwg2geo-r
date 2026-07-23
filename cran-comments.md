@@ -1,28 +1,33 @@
 ## Resubmission
 
-This is a resubmission of a new package. In this version I have:
+This is a resubmission of a new package (0.2.3). The 0.2.2 pre-test
+reported, on Debian, a WARNING in "checking compiled code":
 
-* Excluded `cran-comments.md` from the source tarball via `.Rbuildignore`
-  (fixes the "Non-standard file/directory found at top level" NOTE).
-* Replaced the relative `LICENSE.md` link in `README.md` with an absolute
-  URL (fixes the "invalid file URI" NOTE).
-* Replaced the `https://crates.io/crates/acadrust` link in `README.md`
-  with `https://docs.rs/acadrust`. The crate exists, but crates.io serves
-  its pages via JavaScript and returns 404 to non-browser clients, so the
-  docs.rs page is linked instead.
-* Quoted 'DWG' and 'GeoJSON' in the Title. The remaining flagged word,
-  "Auditable", is a correctly spelled English word.
+    Found 'abort', possibly from 'abort' (C)
+      Object: 'rust/target/release/libdwg2geo_r.a'
+
+The symbol came from the Rust standard library's panic runtime inside the
+*intermediate* static library that the build left behind under
+`src/rust/target` (no package code path calls abort(); the final shared
+object does not reference it, all conversion errors cross the FFI boundary
+as values and become R conditions). In this version:
+
+* `src/Makevars` and `src/Makevars.win` now delete `rust/target` and the
+  extracted `rust/vendor` sources as soon as the shared library is linked,
+  so no Rust intermediate objects remain for the compiled-code check to
+  scan. This is the same fix adopted by the rextendr/hellorust templates
+  for this check.
+
+The remaining "possibly misspelled" word in the DESCRIPTION, "Auditable",
+is a correctly spelled English word (the package's key feature is an audit
+report of every converted, skipped, and failed entity).
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 1 note (R CMD check --as-cran, R 4.6.0; the
+"checking compiled code" step now passes cleanly)
 
 * This is a new submission.
-
-* The "checking compiled code ... Found 'abort'" warning comes from the Rust
-  standard library's panic runtime, which every Rust static library links.
-  No package code path calls abort(): all conversion errors are returned as
-  values across the FFI boundary and surfaced as R conditions.
 
 ## Tarball size
 

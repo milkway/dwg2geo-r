@@ -1,3 +1,12 @@
+# dwg2geo 0.2.3
+
+* CRAN resubmission: the Rust build tree (`src/rust/target` and the extracted
+  `src/rust/vendor` sources) is now removed as soon as the shared library is
+  linked. R (>= 4.5) scans leftover objects under `src/` for entry points such
+  as `abort()`, and the Rust standard library's panic runtime in the
+  intermediate static library triggered a spurious "Found 'abort'" WARNING.
+  No R-facing changes.
+
 # dwg2geo 0.2.2
 
 * CRAN resubmission: excluded `cran-comments.md` from the source tarball,
