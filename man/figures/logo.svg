@@ -51,9 +51,11 @@
       <circle cx="146" cy="62" r="4.2"/>
     </g>
 
-    <!-- wordmark -->
-    <text x="90.5" y="180" text-anchor="middle"
-          font-family="Verdana, DejaVu Sans, sans-serif" font-size="18"
-          font-weight="bold" fill="#e8edf7" letter-spacing="0.5">dwg2geo</text>
   </g>
+
+  <!-- wordmark: outside the clip group and high enough that the hexagon is
+       still ~92px wide there, so no font substitution can clip the ends -->
+  <text x="90.5" y="176" text-anchor="middle"
+        font-family="Verdana, DejaVu Sans, sans-serif" font-size="16"
+        font-weight="bold" fill="#e8edf7" letter-spacing="0.5">dwg2geo</text>
 </svg>
