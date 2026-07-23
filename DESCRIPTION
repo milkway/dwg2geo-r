@@ -1,6 +1,6 @@
 Package: dwg2geo
-Title: Convert Engineering DWG Drawings to Auditable GeoJSON
-Version: 0.2.1
+Title: Convert Engineering 'DWG' Drawings to Auditable 'GeoJSON'
+Version: 0.2.2
 Authors@R: c(
     person("André", "Leite", , "leite@castlab.org", role = c("aut", "cre"))
   )

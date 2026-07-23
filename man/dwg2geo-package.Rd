@@ -4,7 +4,7 @@
 \name{dwg2geo-package}
 \alias{dwg2geo}
 \alias{dwg2geo-package}
-\title{dwg2geo: Convert Engineering DWG Drawings to Auditable GeoJSON}
+\title{dwg2geo: Convert Engineering 'DWG' Drawings to Auditable 'GeoJSON'}
 \description{
 Converts engineering 'DWG' drawings ('AutoCAD' 2013+ format) to 'GeoJSON' entirely in-process, with no 'CAD' software, 'LibreDWG', or 'GDAL' required. Wraps the pure-Rust 'dwg2geo' conversion core \url{https://github.com/milkway/dwg2geo}: every feature carries resolved 'CAD' style metadata (layer, colour, line weight, text), skipped and failed entities are reported with reasons, and the output is deterministic: the same bytes always produce byte-identical 'GeoJSON'. Coordinates are kept in the drawing's local system; the package never guesses a coordinate reference system.
 }

@@ -20,7 +20,8 @@ else
 fi
 # Paths in cargo config resolve relative to the parent of the .cargo dir the
 # config lives in (src/); Makevars installs this file at $CARGO_HOME/config.toml.
-sed -i 's|^directory = ".*"|directory = "rust/vendor"|' vendor-config.toml
+sed -i.bak 's|^directory = ".*"|directory = "rust/vendor"|' vendor-config.toml
+rm -f vendor-config.toml.bak
 tar cJf vendor.tar.xz vendor vendor-config.toml
 rm -rf vendor
 echo "wrote src/rust/vendor.tar.xz ($(du -h vendor.tar.xz | cut -f1))"

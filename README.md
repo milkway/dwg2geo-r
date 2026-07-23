@@ -2,7 +2,7 @@
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/milkway/dwg2geo-r/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/milkway/dwg2geo-r/actions/workflows/R-CMD-check.yaml)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://milkway.github.io/dwg2geo-r/LICENSE.html)
 [![Website](https://img.shields.io/badge/pkgdown-milkway.github.io%2Fdwg2geo--r-8A2BE2.svg)](https://milkway.github.io/dwg2geo-r/)
 <!-- badges: end -->
 
@@ -97,5 +97,5 @@ it on a map, entirely client-side).
 ## License
 
 MIT © André Leite. The bundled conversion core is MIT; its only
-weak-copyleft dependency is [acadrust](https://crates.io/crates/acadrust)
+weak-copyleft dependency is [acadrust](https://docs.rs/acadrust)
 (MPL-2.0).

@@ -1,3 +1,9 @@
+# dwg2geo 0.2.2
+
+* CRAN resubmission: excluded `cran-comments.md` from the source tarball,
+  fixed the license and acadrust links in `README.md`, and quoted the
+  format names in the `DESCRIPTION` title. No code changes.
+
 # dwg2geo 0.2.1
 
 * Initial CRAN submission.
