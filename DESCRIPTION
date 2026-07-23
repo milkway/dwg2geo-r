@@ -10,7 +10,7 @@ Description: Converts engineering 'DWG' drawings ('AutoCAD' 2013+ format) to
     <https://github.com/milkway/dwg2geo>: every feature carries resolved
     'CAD' style metadata (layer, colour, line weight, text), skipped and
     failed entities are reported with reasons, and the output is
-    deterministic — the same bytes always produce byte-identical 'GeoJSON'.
+    deterministic: the same bytes always produce byte-identical 'GeoJSON'.
     Coordinates are kept in the drawing's local system; the package never
     guesses a coordinate reference system.
 License: MIT + file LICENSE

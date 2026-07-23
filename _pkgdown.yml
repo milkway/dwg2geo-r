@@ -14,7 +14,7 @@ template:
     code_font: {google: "JetBrains Mono"}
 
 home:
-  title: dwg2geo — DWG drawings to auditable GeoJSON in R
+  title: "dwg2geo: DWG drawings to auditable GeoJSON in R"
   description: >
     Convert engineering DWG drawings to GeoJSON entirely in-process, with CAD
     style metadata, per-entity diagnostics, and deterministic output.

@@ -18,7 +18,7 @@ metadata as columns.
 \description{
 Parses the GeoJSON produced by \code{\link[=dwg_convert]{dwg_convert()}} into an
 \code{\link[sf:sf]{sf}} data frame. The geometry keeps the drawing's \strong{local}
-coordinates and carries no CRS — set the known one explicitly with
+coordinates and carries no CRS; set the known one explicitly with
 \code{sf::st_set_crs()} before any reprojection.
 }
 \examples{

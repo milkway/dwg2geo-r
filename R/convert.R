@@ -1,14 +1,14 @@
 #' Convert a DWG drawing to GeoJSON
 #'
 #' Reads an AutoCAD 2013+ (`AC1027`) DWG file and converts its model-space
-#' entities to a GeoJSON `FeatureCollection`, entirely in-process — no CAD
+#' entities to a GeoJSON `FeatureCollection`, entirely in-process, with no CAD
 #' software, LibreDWG, or GDAL required. Every feature carries resolved CAD
 #' style metadata (`layer`, `color_rgb`, `color_index`, `linetype`,
 #' `lineweight_mm`, text properties), and skipped or failed entities are
 #' reported with reasons.
 #'
 #' Coordinates are kept in the drawing's **local** system: dwg2geo never
-#' guesses a coordinate reference system. Georeference the result yourself —
+#' guesses a coordinate reference system. Georeference the result yourself:
 #' e.g. read it with [dwg_as_sf()], set the known CRS with
 #' `sf::st_set_crs()`, and reproject with `sf::st_transform()`.
 #'

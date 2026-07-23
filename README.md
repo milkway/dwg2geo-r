@@ -6,18 +6,18 @@
 [![Website](https://img.shields.io/badge/pkgdown-milkway.github.io%2Fdwg2geo--r-8A2BE2.svg)](https://milkway.github.io/dwg2geo-r/)
 <!-- badges: end -->
 
-Convert engineering **DWG drawings to auditable GeoJSON** from R — no CAD
+Convert engineering **DWG drawings to auditable GeoJSON** from R, with no CAD
 software, LibreDWG, or GDAL required. dwg2geo wraps the pure-Rust
 [dwg2geo](https://github.com/milkway/dwg2geo) conversion core as a native
 extension:
 
 - every feature carries resolved CAD style metadata (`layer`, `color_rgb`,
   `color_index`, `linetype`, `lineweight_mm`, text properties);
-- skipped and failed entities are **reported with reasons** — nothing is
+- skipped and failed entities are **reported with reasons**; nothing is
   silently dropped;
 - the output is **deterministic**: the same bytes always produce
   byte-identical GeoJSON on a given platform;
-- coordinates stay in the drawing's local system — the package **never
+- coordinates stay in the drawing's local system, and the package **never
   guesses a CRS**. Georeferencing is explicit and in your hands.
 
 ## Installation
@@ -71,7 +71,7 @@ library(sf)
 
 shapes <- dwg_convert("drawing.dwg") |>
   dwg_as_sf() |>
-  st_set_crs(31983) |>       # SIRGAS 2000 / UTM 23S — you must know this
+  st_set_crs(31983) |>       # SIRGAS 2000 / UTM 23S: you must know this
   st_transform(4326)
 
 plot(shapes["layer"])
@@ -81,7 +81,7 @@ plot(shapes["layer"])
 
 A DWG can be drawn in SIRGAS 2000 / UTM, a local engineering grid,
 millimetres, or arbitrary coordinates. GeoJSON that merely copies CAD
-coordinates can be syntactically valid while geographically wrong — so
+coordinates can be syntactically valid while geographically wrong, so
 dwg2geo always returns local coordinates and leaves the CRS decision to
 you, explicitly.
 
@@ -91,8 +91,8 @@ The same audited core is available everywhere:
 [CLI + Rust crate](https://github.com/milkway/dwg2geo) ·
 [npm (WebAssembly)](https://www.npmjs.com/package/dwg2geo) ·
 [PyPI](https://pypi.org/project/dwg2geo/) ·
-[browser app](https://milkway.github.io/dwg2geo-app/) — upload a DWG and see
-it on a map, entirely client-side.
+[browser app](https://milkway.github.io/dwg2geo-app/) (upload a DWG and see
+it on a map, entirely client-side).
 
 ## License
 

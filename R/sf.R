@@ -2,7 +2,7 @@
 #'
 #' Parses the GeoJSON produced by [dwg_convert()] into an
 #' [`sf`][sf::st_sf] data frame. The geometry keeps the drawing's **local**
-#' coordinates and carries no CRS — set the known one explicitly with
+#' coordinates and carries no CRS; set the known one explicitly with
 #' `sf::st_set_crs()` before any reprojection.
 #'
 #' @param result A `"dwg2geo_result"` object from [dwg_convert()].

@@ -39,7 +39,7 @@ outcomes; \code{skipped}/\code{failed} include a \code{reason} column.}
 }
 \description{
 Reads an AutoCAD 2013+ (\code{AC1027}) DWG file and converts its model-space
-entities to a GeoJSON \code{FeatureCollection}, entirely in-process — no CAD
+entities to a GeoJSON \code{FeatureCollection}, entirely in-process, with no CAD
 software, LibreDWG, or GDAL required. Every feature carries resolved CAD
 style metadata (\code{layer}, \code{color_rgb}, \code{color_index}, \code{linetype},
 \code{lineweight_mm}, text properties), and skipped or failed entities are
@@ -47,7 +47,7 @@ reported with reasons.
 }
 \details{
 Coordinates are kept in the drawing's \strong{local} system: dwg2geo never
-guesses a coordinate reference system. Georeference the result yourself —
+guesses a coordinate reference system. Georeference the result yourself:
 e.g. read it with \code{\link[=dwg_as_sf]{dwg_as_sf()}}, set the known CRS with
 \code{sf::st_set_crs()}, and reproject with \code{sf::st_transform()}.
 
