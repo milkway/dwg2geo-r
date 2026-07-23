@@ -43,3 +43,7 @@ jobs:
         with:
           upload-snapshots: true
           build_args: 'c("--no-manual")'
+          # The Rust panic runtime links abort(), which R CMD check flags as a
+          # WARNING on every Rust-based package (documented in
+          # cran-comments.md) — fail the job on real errors only.
+          error-on: '"error"'
