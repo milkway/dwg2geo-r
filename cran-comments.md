@@ -9,6 +9,14 @@
   No package code path calls abort(): all conversion errors are returned as
   values across the FFI boundary and surfaced as R conditions.
 
+## Tarball size
+
+The source tarball is ~9.5 MB because all Rust crate dependencies are
+vendored (src/rust/vendor.tar.xz), as the CRAN policy for offline Rust
+builds requires; most of that is the platform API binding crates
+(windows-sys, linux-raw-sys, libc) needed to compile on CRAN's own
+builders.
+
 ## Rust
 
 The package compiles a Rust static library (SystemRequirements: Cargo,

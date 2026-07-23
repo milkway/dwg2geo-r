@@ -9,3 +9,4 @@
 ^src/rust/\.cargo$
 ^src/\.cargo$
 ^\.Rproj\.user$
+^src/rust/vendor$
