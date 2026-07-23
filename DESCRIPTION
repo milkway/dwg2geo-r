@@ -2,7 +2,7 @@ Package: dwg2geo
 Title: Convert Engineering DWG Drawings to Auditable GeoJSON
 Version: 0.2.1
 Authors@R: c(
-    person("André", "Leite", , "comercial@promptconsultoria.com", role = c("aut", "cre"))
+    person("André", "Leite", , "leite@castlab.org", role = c("aut", "cre"))
   )
 Description: Converts engineering 'DWG' drawings ('AutoCAD' 2013+ format) to
     'GeoJSON' entirely in-process, with no 'CAD' software, 'LibreDWG', or

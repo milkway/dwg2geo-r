@@ -18,7 +18,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: André Leite \email{comercial@promptconsultoria.com}
+\strong{Maintainer}: André Leite \email{leite@castlab.org}
 
 }
 \keyword{internal}
