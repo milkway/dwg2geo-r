@@ -1,0 +1,36 @@
+# Windows build: same flow as Makevars, with the MSVC-free GNU target that
+# Rtools' Rust toolchain provides.
+
+TARGET = x86_64-pc-windows-gnu
+LIBDIR = rust/target/$(TARGET)/release
+STATLIB = $(LIBDIR)/libdwg2geo_r.a
+PKG_LIBS = -L$(LIBDIR) -ldwg2geo_r -lws2_32 -ladvapi32 -luserenv -lbcrypt -lntdll
+
+all: C_clean
+
+# cargo owns incremental rebuilds; make must always invoke it.
+.PHONY: $(STATLIB)
+
+$(SHLIB): $(STATLIB)
+
+CARGOTMP = $(CURDIR)/.cargo
+
+$(STATLIB):
+	cargo --version && rustc --version
+	if [ -f rust/vendor.tar.xz ]; then \
+	  tar xf rust/vendor.tar.xz -C rust && \
+	  mkdir -p $(CARGOTMP) && \
+	  cp rust/vendor-config.toml $(CARGOTMP)/config.toml && \
+	  export CARGO_HOME=$(CARGOTMP) && \
+	  cargo build --offline --jobs 2 --release --target=$(TARGET) --manifest-path=rust/Cargo.toml; \
+	else \
+	  export CARGO_HOME=$(CARGOTMP) && \
+	  cargo build --jobs 2 --release --target=$(TARGET) --manifest-path=rust/Cargo.toml; \
+	fi
+	rm -rf $(CARGOTMP)
+
+C_clean:
+	rm -rf $(SHLIB) $(OBJECTS)
+
+clean:
+	rm -rf $(SHLIB) $(OBJECTS) rust/target rust/vendor rust/.cargo $(CARGOTMP)

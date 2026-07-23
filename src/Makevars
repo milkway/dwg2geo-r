@@ -1,0 +1,39 @@
+# Build the Rust staticlib and link it into the package's shared object.
+# CRAN policy: report toolchain versions, cap build jobs at 2, and never
+# touch the network when a vendored dependency archive is present.
+
+LIBDIR = rust/target/release
+STATLIB = $(LIBDIR)/libdwg2geo_r.a
+PKG_LIBS = -L$(LIBDIR) -ldwg2geo_r
+
+all: C_clean
+
+# cargo owns incremental rebuilds; make must always invoke it.
+.PHONY: $(STATLIB)
+
+$(SHLIB): $(STATLIB)
+
+CARGOTMP = $(CURDIR)/.cargo
+
+$(STATLIB):
+	# Report toolchain versions (CRAN policy).
+	cargo --version && rustc --version
+	# Offline vendored build when the archive is present (CRAN); otherwise a
+	# normal online build (development).
+	if [ -f rust/vendor.tar.xz ]; then \
+	  tar xf rust/vendor.tar.xz -C rust && \
+	  mkdir -p $(CARGOTMP) && \
+	  cp rust/vendor-config.toml $(CARGOTMP)/config.toml && \
+	  export CARGO_HOME=$(CARGOTMP) && \
+	  cargo build --offline --jobs 2 --release --manifest-path=rust/Cargo.toml; \
+	else \
+	  export CARGO_HOME=$(CARGOTMP) && \
+	  cargo build --jobs 2 --release --manifest-path=rust/Cargo.toml; \
+	fi
+	rm -rf $(CARGOTMP)
+
+C_clean:
+	rm -rf $(SHLIB) $(OBJECTS)
+
+clean:
+	rm -rf $(SHLIB) $(OBJECTS) rust/target rust/vendor rust/.cargo $(CARGOTMP)

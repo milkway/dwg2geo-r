@@ -1,0 +1,44 @@
+url: https://milkway.github.io/dwg2geo-r/
+
+figures:
+  dev: grDevices::png
+
+template:
+  bootstrap: 5
+  bslib:
+    primary: "#7c5cff"
+    bg: "#ffffff"
+    fg: "#10192e"
+    base_font: {google: "Inter"}
+    heading_font: {google: "Inter"}
+    code_font: {google: "JetBrains Mono"}
+
+home:
+  title: dwg2geo — DWG drawings to auditable GeoJSON in R
+  description: >
+    Convert engineering DWG drawings to GeoJSON entirely in-process, with CAD
+    style metadata, per-entity diagnostics, and deterministic output.
+
+navbar:
+  structure:
+    left: [intro, reference, news]
+    right: [search, github]
+  components:
+    github:
+      icon: fab fa-github
+      href: https://github.com/milkway/dwg2geo-r
+      aria-label: GitHub
+
+reference:
+- title: Convert
+  contents:
+  - dwg_convert
+  - dwg_as_sf
+- title: Metadata
+  contents:
+  - dwg_core_version
+  - dwg2geo-package
+
+authors:
+  André Leite:
+    href: https://github.com/milkway

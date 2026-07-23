@@ -1,0 +1,22 @@
+[package]
+name = "dwg2geo-r"
+version = "0.2.1"
+edition = "2021"
+publish = false
+
+[lib]
+crate-type = ["staticlib"]
+name = "dwg2geo_r"
+
+[dependencies]
+extendr-api = "0.9"
+dwg2geo = { version = "0.2.1", default-features = false, features = ["native-backend"] }
+serde_json = "1"
+
+[profile.release]
+lto = true
+codegen-units = 1
+
+# CRAN builds must not access the network; tools/vendor.sh produces
+# vendor.tar.xz and src/Makevars extracts it and enables this offline config
+# via .cargo/config.toml when present.

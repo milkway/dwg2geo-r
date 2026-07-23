@@ -1,0 +1,11 @@
+^\.github$
+^_pkgdown\.yml$
+^pkgdown$
+^docs$
+^tools$
+^LICENSE\.md$
+^README\.Rmd$
+^src/rust/target$
+^src/rust/\.cargo$
+^src/\.cargo$
+^\.Rproj\.user$

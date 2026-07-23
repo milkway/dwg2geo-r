@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 181 209" width="181" height="209">
+  <defs>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c5cff"/>
+      <stop offset="1" stop-color="#29c7ac"/>
+    </linearGradient>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#141b36"/>
+      <stop offset="1" stop-color="#0b1020"/>
+    </linearGradient>
+    <clipPath id="hexclip">
+      <polygon points="90.5,6.5 175.5,55.5 175.5,153.5 90.5,202.5 5.5,153.5 5.5,55.5"/>
+    </clipPath>
+  </defs>
+
+  <!-- hex border + face -->
+  <polygon points="90.5,2 179.5,53.25 179.5,155.75 90.5,207 1.5,155.75 1.5,53.25"
+           fill="url(#rim)"/>
+  <polygon points="90.5,6.5 175.5,55.5 175.5,153.5 90.5,202.5 5.5,153.5 5.5,55.5"
+           fill="url(#sky)"/>
+
+  <g clip-path="url(#hexclip)">
+    <!-- blueprint grid (the DWG side) -->
+    <g stroke="#2a3763" stroke-width="1">
+      <path d="M5 55 H176 M5 80 H176 M5 105 H176 M5 130 H176 M5 155 H176"/>
+      <path d="M30 6 V203 M60 6 V203 M90 6 V203 M120 6 V203 M150 6 V203"/>
+    </g>
+
+    <!-- CAD linework fading in from the left: arc + dimension -->
+    <g fill="none" stroke="#8ea2ff" stroke-width="2.2" stroke-linecap="round" opacity="0.85">
+      <path d="M22 132 A38 38 0 0 1 60 94"/>
+      <path d="M22 132 h18 M60 94 v18"/>
+      <circle cx="42" cy="63" r="9"/>
+      <path d="M33 63 h18 M42 54 v18" stroke-width="1.2"/>
+    </g>
+
+    <!-- the converted map: corridor polylines (teal), parcels (orange), points (purple) -->
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M34 152 C 64 138, 84 112, 106 92 S 148 56, 168 48"
+            stroke="#29c7ac" stroke-width="6"/>
+      <path d="M46 160 C 76 146, 96 120, 116 102 S 156 68, 176 60"
+            stroke="#29c7ac" stroke-width="2.4" opacity="0.55"/>
+      <path d="M100 138 l24 -8 9 18 -24 8 z" stroke="#ffb14e" stroke-width="2.4"
+            fill="#ffb14e" fill-opacity="0.18"/>
+      <path d="M126 88 l20 -7 8 15 -20 7 z" stroke="#ffb14e" stroke-width="2.4"
+            fill="#ffb14e" fill-opacity="0.18"/>
+    </g>
+    <g fill="#7c5cff" stroke="#e8edf7" stroke-width="1.2">
+      <circle cx="106" cy="92" r="4.2"/>
+      <circle cx="74" cy="122" r="4.2"/>
+      <circle cx="146" cy="62" r="4.2"/>
+    </g>
+
+    <!-- wordmark -->
+    <text x="90.5" y="180" text-anchor="middle"
+          font-family="Verdana, DejaVu Sans, sans-serif" font-size="18"
+          font-weight="bold" fill="#e8edf7" letter-spacing="0.5">dwg2geo</text>
+  </g>
+</svg>
