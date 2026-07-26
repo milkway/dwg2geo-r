@@ -36,7 +36,9 @@ fn convert_impl(data: Raw, polygonize_closed: bool, curve_tolerance: Nullable<f6
 /// @noRd
 #[extendr]
 fn core_version_impl() -> String {
-    env!("CARGO_PKG_VERSION").to_string()
+    // env!("CARGO_PKG_VERSION") here would report this wrapper crate, which
+    // drifts from the core on CRAN-only resubmissions; ask the core itself.
+    dwg2geo::report::Generator::current().version.to_string()
 }
 
 extendr_module! {
