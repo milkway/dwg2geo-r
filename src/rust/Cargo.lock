@@ -278,9 +278,9 @@ dependencies = [
 
 [[package]]
 name = "dwg2geo"
-version = "0.2.1"
+version = "0.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "d7b32dc22446dff9a55457d10fb2ee6272977be5fca039318a3cd3add2c4162d"
+checksum = "9a02a1810276c9ea49b6e853b1b8365596c0623b2a1d4a8c981c0ba65a6400a4"
 dependencies = [
  "acadrust",
  "anyhow",
