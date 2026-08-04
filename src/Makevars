@@ -16,8 +16,10 @@ $(SHLIB): $(STATLIB)
 CARGOTMP = $(CURDIR)/.cargo
 
 $(STATLIB):
-	# Report toolchain versions (CRAN policy).
-	cargo --version && rustc --version
+	# Report toolchain versions (CRAN policy). CRAN's macOS builders install
+	# Rust via rustup in ~/.cargo/bin, which is not on the default PATH.
+	export PATH="$(PATH):$(HOME)/.cargo/bin" && \
+	  cargo --version && rustc --version
 	# Offline vendored build when the archive is present (CRAN); otherwise a
 	# normal online build (development).
 	if [ -f rust/vendor.tar.xz ]; then \
@@ -25,9 +27,11 @@ $(STATLIB):
 	  mkdir -p $(CARGOTMP) && \
 	  cp rust/vendor-config.toml $(CARGOTMP)/config.toml && \
 	  export CARGO_HOME=$(CARGOTMP) && \
+	  export PATH="$(PATH):$(HOME)/.cargo/bin" && \
 	  cargo build --offline --jobs 2 --release --manifest-path=rust/Cargo.toml; \
 	else \
 	  export CARGO_HOME=$(CARGOTMP) && \
+	  export PATH="$(PATH):$(HOME)/.cargo/bin" && \
 	  cargo build --jobs 2 --release --manifest-path=rust/Cargo.toml; \
 	fi
 	rm -rf $(CARGOTMP)

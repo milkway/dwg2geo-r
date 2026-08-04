@@ -16,15 +16,19 @@ $(SHLIB): $(STATLIB)
 CARGOTMP = $(CURDIR)/.cargo
 
 $(STATLIB):
-	cargo --version && rustc --version
+	# Rust may live in ~/.cargo/bin (rustup), which is not on the default PATH.
+	export PATH="$(PATH):$(HOME)/.cargo/bin" && \
+	  cargo --version && rustc --version
 	if [ -f rust/vendor.tar.xz ]; then \
 	  tar xf rust/vendor.tar.xz -C rust && \
 	  mkdir -p $(CARGOTMP) && \
 	  cp rust/vendor-config.toml $(CARGOTMP)/config.toml && \
 	  export CARGO_HOME=$(CARGOTMP) && \
+	  export PATH="$(PATH):$(HOME)/.cargo/bin" && \
 	  cargo build --offline --jobs 2 --release --target=$(TARGET) --manifest-path=rust/Cargo.toml; \
 	else \
 	  export CARGO_HOME=$(CARGOTMP) && \
+	  export PATH="$(PATH):$(HOME)/.cargo/bin" && \
 	  cargo build --jobs 2 --release --target=$(TARGET) --manifest-path=rust/Cargo.toml; \
 	fi
 	rm -rf $(CARGOTMP)

@@ -1,3 +1,13 @@
+# dwg2geo 0.2.4
+
+* Fixed installation on CRAN's macOS builders: `cargo` is invoked with
+  `~/.cargo/bin` appended to the `PATH`, covering rustup installations that
+  are not on the default `PATH` (0.2.3 failed to install on all four CRAN
+  macOS flavors with "cargo: command not found").
+* Upgraded the embedded conversion core to dwg2geo 0.2.3, which adds six
+  entity semantics (curve-fit polylines, dimensions, mlines, multileaders,
+  polyface meshes, model-space attdefs) and geodata reporting.
+
 # dwg2geo 0.2.3
 
 * CRAN resubmission: the Rust build tree (`src/rust/target` and the extracted
