@@ -6,6 +6,8 @@
 \alias{dwg2geo-package}
 \title{dwg2geo: Convert Engineering 'DWG' Drawings to Auditable 'GeoJSON'}
 \description{
+\if{html}{\figure{logo.svg}{options: style='float: right' alt='logo' width='120'}}
+
 Converts engineering 'DWG' drawings ('AutoCAD' 2013+ format) to 'GeoJSON' entirely in-process, with no 'CAD' software, 'LibreDWG', or 'GDAL' required. Wraps the pure-Rust 'dwg2geo' conversion core \url{https://github.com/milkway/dwg2geo}: every feature carries resolved 'CAD' style metadata (layer, colour, line weight, text), skipped and failed entities are reported with reasons, and the output is deterministic: the same bytes always produce byte-identical 'GeoJSON'. Coordinates are kept in the drawing's local system; the package never guesses a coordinate reference system.
 }
 \seealso{
@@ -18,7 +20,12 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: André Leite \email{leite@castlab.org}
+\strong{Maintainer}: André Leite \email{leite@castlab.org} (\href{https://orcid.org/0000-0002-4718-9766}{ORCID})
+
+Authors:
+\itemize{
+  \item André Leite \email{leite@castlab.org} (\href{https://orcid.org/0000-0002-4718-9766}{ORCID})
+}
 
 }
 \keyword{internal}
