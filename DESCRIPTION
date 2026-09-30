@@ -3,7 +3,13 @@ Title: Convert Engineering 'DWG' Drawings to Auditable 'GeoJSON'
 Version: 0.2.4
 Authors@R: c(
     person("André", "Leite", , "leite@castlab.org", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-4718-9766"))
+           comment = c(ORCID = "0000-0002-4718-9766")),
+    person("Raydonal", "Ospina", email = "raydonal@castlab.org", role = "aut",
+           comment = c(ORCID = "0000-0002-9884-9090")),
+    person("Hugo", "Vasconcelos", email = "hugo.vasconcelos@ufpe.br", role = "aut",
+           comment = c(ORCID = "0000-0001-6249-0920")),
+    person("Diogo", "Bezerra", email = "diogo.bezerra@ufpe.br", role = "aut",
+           comment = c(ORCID = "0000-0002-1216-8674"))
   )
 Description: Converts engineering 'DWG' drawings ('AutoCAD' 2013+ format) to
     'GeoJSON' entirely in-process, with no 'CAD' software, 'LibreDWG', or
